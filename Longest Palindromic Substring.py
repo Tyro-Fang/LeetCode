@@ -18,7 +18,7 @@ def find2(s):
     maxl=0
     mb=0
     for i in range(len(l)):
-        maxlen=2
+        maxlen=1
         mbegin=i
         l1=l[i:i+maxlen]
         l2=l1[::-1]
