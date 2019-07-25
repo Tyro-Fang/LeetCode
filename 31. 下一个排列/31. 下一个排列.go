@@ -3,7 +3,6 @@ package main
 func main() {
 	a := []int{1, 1, 1, 0}
 	nextPermutation(a)
-	//fmt.Println(b)
 	//c := maximalRectangle(a)
 	//fmt.Println(c)
 }
