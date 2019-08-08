@@ -19,21 +19,29 @@ func main() {
 }
 
 func generateTrees(n int) []*TreeNode {
-	nums := []TreeNode{}
-	for i := 1; i <= n; i++ {
-		temp := TreeNode{
-			Val:   i,
-			Left:  nil,
-			Right: nil,
-		}
-		nums = append(nums, temp)
+	if n == 0 {
+		return make([]*TreeNode, 0)
 	}
-	b := generateTree(nums)
+	return generateTree(1, n)
 }
-func generateTree(nums []TreeNode) []*TreeNode {
-	nlen := len(nums)
-	if nlen == 1 {
-		return []*TreeNode{&nums[0]}
+func generateTree(start int, end int) []*TreeNode {
+	trees := make([]*TreeNode, 0)
+	if start > end {
+		trees = append(trees, nil)
+		return trees
 	}
+	for i := start; i <= end; i++ {
+		left := generateTree(start, i-1)
+		right := generateTree(i+1, end)
+		for _, j := range left {
+			for _, k := range right {
+				root := TreeNode{i, nil, nil}
+				root.Left = j
+				root.Right = k
+				trees = append(trees, &root)
+			}
+		}
+	}
+	return trees
 
 }

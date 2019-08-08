@@ -24,6 +24,7 @@ func longestPalindrome(s string) string {
 	for i := 1; i < slen; i++ {
 		j := i - 1
 		k := i + 1
+		l:=i
 		temp := 1
 		for j >= 0 && k < slen {
 			if s[j] == s[k] {
