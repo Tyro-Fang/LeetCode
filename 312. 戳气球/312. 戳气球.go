@@ -10,7 +10,6 @@ func main() {
 	fmt.Println(b)
 }
 func maxCoins(nums []int) int {
-
 	nums = append([]int{1}, nums...)
 	nums = append(nums, []int{1}...)
 	nlen := len(nums)

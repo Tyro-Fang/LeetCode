@@ -1,0 +1,30 @@
+package main
+
+import "fmt"
+
+func main() {
+	a := 7
+	p := 3
+	b := uniquePaths(a, p)
+	fmt.Println(b)
+}
+
+func uniquePaths(m int, n int) int {
+	if m == 0 || n == 0 {
+		return 0
+	}
+	res := make([][]int, m)
+	for i := range res {
+		res[i] = make([]int, n)
+	}
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if i == 0 || j == 0 {
+				res[i][j] = 1
+				continue
+			}
+			res[i][j] = res[i-1][j] + res[i][j-1]
+		}
+	}
+	return res[m-1][n-1]
+}
